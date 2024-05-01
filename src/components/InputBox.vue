@@ -1,10 +1,18 @@
 <template>
+    <form>
+        <div>
+            <img>
+        </div>
+        <label>
+            <input>
+        </label>
+    </form>
 
 </template>
 
 <script>
 export default{
-    name:'InputBox',
+    name:'InputBox'
 }
 
 </script>

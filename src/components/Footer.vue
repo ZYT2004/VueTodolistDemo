@@ -1,6 +1,6 @@
 <template>
 <div>
-    <span>A simple todolist</span>
+    <span>Double click to edit a todo</span>
     <span>Created by Matilda</span>
     <span>Reference: petehunt</span>
 </div>
