@@ -12,7 +12,25 @@
 
 <script>
 export default{
-    name:'Task'
+    name:'Task',
+    props:{
+
+    },
+    data(){
+        return{
+
+        }
+    },
+    computed:{
+
+    },
+    methods:{
+
+    },
+    created(){
+
+    },
+    emits:[]
 }
 </script>
 

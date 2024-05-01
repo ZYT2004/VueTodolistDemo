@@ -18,6 +18,23 @@ export default{
         InputBox,
         Task,
         Funct
+    },
+    data(){
+        return{
+
+        }
+    },
+    computed:{
+
+    },
+    methods:{
+
+    },
+    created(){
+
+    },
+    watch:{
+        
     }
 }
 </script>
