@@ -62,7 +62,7 @@ export default{
             }
         }
     },
-    emist:[addTask]
+    emits:['addTask','chooseAll']
 }
 
 </script>

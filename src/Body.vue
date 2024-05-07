@@ -1,10 +1,10 @@
 <template>
     <div>
-        <InputBox/>
-        <ul>
-            <Tasks/>
+        <InputBox :tasks=tasks @addTask='addTask' @chooseAll='chooseAll'/>
+        <ul :key=task.id v-for='task in tasks'>
+            <Tasks :task=task :status=status @chooseTask='chooseTask' @deleteTask='deleteTask'/>
         </ul>
-        <Funct/>
+        <Funct :tasks=tasks :status=status @clearTasks='clearTasks' @showSomeType='showSomeType'/>
     </div>
 </template>
 
@@ -21,20 +21,71 @@ export default{
     },
     data(){
         return{
-
+            tasks:Array,
+            status:String
         }
     },
-    computed:{
-
-    },
     methods:{
-
+        addTask(newTask){
+            this.tasks.push(newTask);
+        },
+        chooseAll(state){
+            if(state=='1'){
+                this.tasks.forEach((task) => {
+                    task.reminder=true;
+                });
+            }
+            if(state=='2'){
+                this.tasks.forEach((task)=>{
+                    task.reminder=false;
+                })
+            }
+        },
+        chooseTask(id){
+            this.tasks=this.tasks.map((task)=>{
+                if(task.id==id){
+                    task.reminder=!task.reminder;
+                }
+            })
+        },
+        deleteTask(id){
+            this.tasks=this.tasks.filter((task)=>{
+                task.id!=id;
+            })
+        },
+        clearTasks(){
+            this.tasks=this.tasks.filter((task)=>{
+                task.reminder==false;
+            })
+        },
+        showSomeType(index){
+            this.status=index;
+        }
     },
     created(){
-
+        if(window.localStorage.getItem('tasks')){
+            this.tasks=JSON.parse(window.localStorage.getItem('tasks'));
+        }else{
+            this.tasks=[];
+        }
+        if(window.localStorage.getItem('status')){
+            this.status=window.localStorage.getItem('status');
+        }else{
+            this.status='1';
+        }
     },
     watch:{
-        
+        tasks:{
+            handler(newValue){
+                window.localStorage.setItem('tasks',JSON.stringify(newValue));
+            },
+            deep:true
+        },
+        status:{
+            handler(newValue){
+                window.localStorage.setItem('status',newValue);
+            }
+        }
     }
 }
 </script>
