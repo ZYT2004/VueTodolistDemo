@@ -1,6 +1,6 @@
 <template>
 <div>
-    <span>TODO</span>
+    <span>TODOS</span>
 </div>
 </template>
 
@@ -11,5 +11,12 @@ export default{
 </script>
 
 <style scoped>
-
+div{
+    margin-bottom: 30px;
+    margin-top:80px;
+}
+span{
+    font-size:100px;
+    color: #e4cea5;
+}
 </style>

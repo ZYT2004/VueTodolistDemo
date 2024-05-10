@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='father'>
         <Header/>
         <Body/>
         <Footer/>
@@ -21,5 +21,12 @@ export default{
 </script>
 
 <style scoped>
-
+.father{
+    display:flex;
+    flex-direction:column;
+    justify-items: flex-start;
+    align-items: center;
+    background-color:#d3e9d7;
+    height:100vh;
+}
 </style>

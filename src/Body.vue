@@ -1,10 +1,10 @@
 <template>
     <div>
-        <InputBox :tasks=tasks @addTask='addTask' @chooseAll='chooseAll'/>
-        <ul :key=task.id v-for='task in tasks'>
-            <Tasks :task=task :status=status @chooseTask='chooseTask' @deleteTask='deleteTask'/>
+        <InputBox :tasks='tasks' @add_Task='addTask' @chooseAll='chooseAll'/>
+        <ul v-for='task in tasks' :key='task.id' >
+            <Task :task='task' :status='status' @chooseTask='chooseTask' @deleteTask='deleteTask'/>
         </ul>
-        <Funct :tasks=tasks :status=status @clearTasks='clearTasks' @showSomeType='showSomeType'/>
+        <Funct :tasks='tasks' :status='status' @clearTasks='clearTasks' @showSomeType='showSomeType'/>
     </div>
 </template>
 
@@ -28,6 +28,7 @@ export default{
     methods:{
         addTask(newTask){
             this.tasks.push(newTask);
+            console.log(newTask);
         },
         chooseAll(state){
             if(state=='1'){
@@ -45,18 +46,17 @@ export default{
             this.tasks=this.tasks.map((task)=>{
                 if(task.id==id){
                     task.reminder=!task.reminder;
+                    return task;
                 }
+                return task;
             })
         },
         deleteTask(id){
-            this.tasks=this.tasks.filter((task)=>{
-                task.id!=id;
-            })
+            console.log(id);
+            this.tasks=this.tasks.filter((task)=>task.id!==id)
         },
         clearTasks(){
-            this.tasks=this.tasks.filter((task)=>{
-                task.reminder==false;
-            })
+            this.tasks=this.tasks.filter((task)=>task.reminder==false)
         },
         showSomeType(index){
             this.status=index;
@@ -91,5 +91,20 @@ export default{
 </script>
 
 <style scoped>
-
+div {
+    display:flex;
+    flex-direction:column;
+    justify-items: flex-start;
+    align-items: center;
+    background-color: #d3e9d7;
+}
+*{
+    margin:0px;
+    padding:0px;
+}
+ul{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>
